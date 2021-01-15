@@ -3,32 +3,20 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { About } from "../styles";
 import Toggle from "./Toggle";
+import { AnimateSharedLayout } from "framer-motion";
+import {UseScroll} from "./useScroll";
+import {scrollReveal} from "../animation";
 
 const FaqSection = () => {
+  const [element, controls] = UseScroll();
+
   return (
-    <Faq>
+    <Faq variants={scrollReveal} ref={element} animate={controls} initial="hidden">
       <h2>
         Any Questions <span>FAQ</span>
       </h2>
-      <Toggle title="How Do I Start?">
-        <div className="answer">
-          <p>Lorem ipsum dolor sit amet.</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-            officiis animi quasi, velit eius deserunt.
-          </p>
-        </div>
-      </Toggle>
-      <Toggle title="Daily Schedule">
-          <div className="answer">
-            <p>Lorem ipsum dolor sit amet.</p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-              officiis animi quasi, velit eius deserunt.
-            </p>
-        </div>
-      </Toggle>
-      <Toggle title="Payment Methods">
+      <AnimateSharedLayout>
+        <Toggle title="How Do I Start?">
           <div className="answer">
             <p>Lorem ipsum dolor sit amet.</p>
             <p>
@@ -36,8 +24,8 @@ const FaqSection = () => {
               officiis animi quasi, velit eius deserunt.
             </p>
           </div>
-      </Toggle>
-      <Toggle title="What Products Do You Offer?">
+        </Toggle>
+        <Toggle title="Daily Schedule">
           <div className="answer">
             <p>Lorem ipsum dolor sit amet.</p>
             <p>
@@ -45,7 +33,26 @@ const FaqSection = () => {
               officiis animi quasi, velit eius deserunt.
             </p>
           </div>
-      </Toggle>
+        </Toggle>
+        <Toggle title="Payment Methods">
+          <div className="answer">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              officiis animi quasi, velit eius deserunt.
+            </p>
+          </div>
+        </Toggle>
+        <Toggle title="What Products Do You Offer?">
+          <div className="answer">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              officiis animi quasi, velit eius deserunt.
+            </p>
+          </div>
+        </Toggle>
+      </AnimateSharedLayout>
     </Faq>
   );
 };
